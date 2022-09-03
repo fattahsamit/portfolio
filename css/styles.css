@@ -12,6 +12,10 @@ svg {
   width: 25px;
 }
 
+svg:hover {
+  color: rgb(105, 105, 105);
+}
+
 img {
   height: 300px;
   width: 300px;
