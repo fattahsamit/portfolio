@@ -1,13 +1,16 @@
 import React from "react";
 import { Outlet } from "react-router-dom";
 import Header from "../Header/Header";
+import Footer from "../Footer/Footer";
 
 const Main = () => {
   return (
     <>
       <Header></Header>
-      <Outlet></Outlet>
-      {/* <h2>Footer</h2> */}
+      <div className="min-h-screen md:w-3/4 mx-auto">
+        <Outlet></Outlet>
+      </div>
+      <Footer></Footer>
     </>
   );
 };
