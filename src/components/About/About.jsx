@@ -4,7 +4,7 @@ import developerAnimation from "../../assets/animations/developer.json";
 
 const About = () => {
   return (
-    <div className=" lg:w-4/12 ">
+    <div>
       <Lottie animationData={developerAnimation} loop={true} />
     </div>
   );
