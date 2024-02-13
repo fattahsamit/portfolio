@@ -3,6 +3,7 @@ import {
   faFacebook,
   faGithub,
   faLinkedin,
+  faYoutube,
 } from "@fortawesome/free-brands-svg-icons";
 
 const Banner = () => {
@@ -32,7 +33,7 @@ const Banner = () => {
             Software Engineering, Web Development, Cloud Computing
           </p>
 
-          <div className="flex gap-4">
+          <div className="flex gap-4 items-center">
             <a
               href="https://www.linkedin.com/in/fattah-samit/"
               target="_blank"
@@ -53,6 +54,13 @@ const Banner = () => {
               rel="noreferrer"
             >
               <FontAwesomeIcon className="text-2xl" icon={faFacebook} />
+            </a>
+            <a
+              href="www.youtube.com/@fattahsamit"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <FontAwesomeIcon className="text-2xl" icon={faYoutube} />
             </a>
           </div>
         </div>

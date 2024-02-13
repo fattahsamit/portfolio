@@ -41,7 +41,7 @@ const Header = () => {
           </ul>
         </div>
 
-        <a className="btn btn-ghost normal-case text-2xl">
+        <a className="btn btn-ghost normal-case text-2xl" href="#">
           Fattah_<span className="text-primary">Samit</span>
         </a>
       </div>

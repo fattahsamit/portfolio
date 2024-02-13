@@ -8,13 +8,13 @@ const Carousel = () => {
           img={
             "https://cdn.pixabay.com/photo/2018/05/18/15/30/web-design-3411373_1280.jpg"
           }
-          liveLink={"https://fattahsamit.netlify.app/"}
-          repoLink={"https://github.com/fattahsamit/portfolio"}
-          title={"Project 1"}
+          liveLink={"https://todo-m23.netlify.app"}
+          repoLink={"https://github.com/fattahsamit/to-do-list"}
+          title={"To Do List"}
           description={
-            "Lorem ipsum dolor sit, amet consectetur adipisicing elit. orem recusandae harum accusantium fuga, mollitia eveniet."
+            "React-based to-do list web app featuring state management with Redux. It includes user authentication, form validation, private routes, task management, and Dark Mode support."
           }
-          tools={["React", "Redux", "Typescript"]}
+          tools={["React", "Redux", "Typescript", "Tailwind CSS"]}
         ></ProjectCard>
       </div>
       <div className="carousel-item">
@@ -36,13 +36,13 @@ const Carousel = () => {
           img={
             "https://cdn.pixabay.com/photo/2018/05/18/15/30/web-design-3411373_1280.jpg"
           }
-          liveLink={"https://fattahsamit.netlify.app/"}
-          repoLink={"https://github.com/fattahsamit/portfolio"}
-          title={"Project 3"}
+          liveLink={"https://fattahsamit.github.io/text-editor"}
+          repoLink={"https://github.com/fattahsamit/text-editor"}
+          title={"Text Editor"}
           description={
-            "Lorem ipsum dolor sit, amet consectetur adipisicing elit. orem recusandae harum accusantium fuga, mollitia eveniet."
+            "Responsive web application that allows users to create and edit plain text documents directly in any web browser.Designed to be fully responsive and functional, meaning it will work seamlessly on devices of all sizes as long as you have internet connection."
           }
-          tools={["HTML", "CSS", "Javascript"]}
+          tools={["HTML", "Tailwind CSS", "Javascript"]}
         ></ProjectCard>
       </div>
       <div className="carousel-item">
