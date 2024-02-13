@@ -1,10 +1,9 @@
-import React from "react";
 import EducationCard from "./EducationCard";
 
 const Education = () => {
   return (
-    <div>
-      <h2 className="text-4xl text-center mb-10">Education</h2>
+    <div className="my-20">
+      <h2 className="text-4xl text-center my-10 text-primary">Education</h2>
       <EducationCard
         img={"assets/images/diu.png"}
         degree={"BSc. in Computer Science & Engineering"}
