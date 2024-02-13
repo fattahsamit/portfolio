@@ -9,7 +9,7 @@ const ExperienceCard = ({
 }) => {
   return (
     <div className="card p-5 my-5 bg-base-100 shadow-xl border border-primary mx-auto w-3/4 flex items-center md:flex-row">
-      <div className="w-72">
+      <div className="w-fit max-w-24">
         <img src={img} alt="Company" className="rounded-full" />
       </div>
       <div className="card-body">
