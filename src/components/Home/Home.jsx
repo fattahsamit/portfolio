@@ -8,10 +8,10 @@ const Home = () => {
   return (
     <div className="container mx-auto">
       <Banner></Banner>
-      <About></About>
-      <ProjectShowcase />
+      {/* <About></About> */}
+      {/* <ProjectShowcase />
       <Experience></Experience>
-      <Education></Education>
+      <Education></Education> */}
     </div>
   );
 };

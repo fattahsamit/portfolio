@@ -5,11 +5,11 @@ import Footer from "../Footer/Footer";
 const Main = () => {
   return (
     <>
-      <Header></Header>
+      {/* <Header></Header> */}
       <div className="md:w-3/4 mx-auto">
         <Outlet></Outlet>
       </div>
-      <Footer></Footer>
+      {/* <Footer></Footer> */}
     </>
   );
 };

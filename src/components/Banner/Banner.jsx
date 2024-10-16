@@ -16,11 +16,9 @@ const Banner = () => {
           className="max-w-full md:max-w-md rounded-full border-4 border-primary"
         />
         <div>
-          <h1 className="text-5xl text-primary font-bold">
-            Mohammad Fattah Samit
-          </h1>
+          <h1 className="text-5xl text-primary font-bold">Fattah Samit</h1>
           <h1 className="text-2xl text-neutral-content font-semibold pt-3">
-            Software Engineer | QA Automation
+            Software Engineer
           </h1>
           <p className="pt-5">
             Computer Science and Engineering graduate passionate about
@@ -30,7 +28,7 @@ const Banner = () => {
             projects.
           </p>
           <p className="text-primary font-mono pt-2 pb-6">
-            Software Engineering, Web Development, Cloud Computing
+            Web Development | Quality Assurance
           </p>
 
           <div className="flex gap-4 items-center">
@@ -48,7 +46,7 @@ const Banner = () => {
             >
               <FontAwesomeIcon className="text-2xl" icon={faGithub} />
             </a>
-            <a
+            {/* <a
               href="https://www.facebook.com/fattah.samit/"
               target="_blank"
               rel="noreferrer"
@@ -61,7 +59,7 @@ const Banner = () => {
               rel="noreferrer"
             >
               <FontAwesomeIcon className="text-2xl" icon={faYoutube} />
-            </a>
+            </a> */}
           </div>
         </div>
       </div>
