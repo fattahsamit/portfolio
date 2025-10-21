@@ -1,0 +1,62 @@
+---
+---
+
+<section id="about" class="min-h-screen flex items-center justify-center px-6 py-20">
+  <div class="container mx-auto max-w-4xl">
+    <h2 class="text-4xl md:text-5xl font-bold mb-12 text-center">About Me</h2>
+    
+    <div class="grid md:grid-cols-2 gap-12 items-center">
+      <div data-animate-about-left>
+        <p class="text-lg text-gray-400 mb-4">
+          I'm a passionate Software Engineer with expertise in both development and quality assurance. 
+          I believe in writing clean, maintainable code that's thoroughly tested.
+        </p>
+        <p class="text-lg text-gray-400 mb-4">
+          My dual role as a developer and QA engineer gives me a unique perspective on building 
+          reliable applications from the ground up.
+        </p>
+        <p class="text-lg text-gray-400">
+          When I'm not coding, you'll find me exploring new technologies or sharing knowledge with the developer community.
+        </p>
+      </div>
+      
+      <div data-animate-about-right class="space-y-4">
+        <div class="bg-gray-900 p-6 rounded-lg border border-gray-800">
+          <h3 class="text-xl font-semibold mb-2 text-blue-400">Development</h3>
+          <p class="text-gray-400">Building scalable web applications with modern frameworks and best practices</p>
+        </div>
+        <div class="bg-gray-900 p-6 rounded-lg border border-gray-800">
+          <h3 class="text-xl font-semibold mb-2 text-purple-400">Quality Assurance</h3>
+          <p class="text-gray-400">Ensuring reliability through comprehensive testing strategies</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  import { animate, inView } from "motion";
+  
+  const leftElement = document.querySelector('[data-animate-about-left]');
+  const rightElement = document.querySelector('[data-animate-about-right]');
+  
+  if (leftElement) {
+    inView(leftElement, () => {
+      animate(
+        leftElement,
+        { opacity: [0, 1], x: [-50, 0] },
+        { duration: 0.8, easing: [0.22, 1, 0.36, 1] }
+      );
+    });
+  }
+  
+  if (rightElement) {
+    inView(rightElement, () => {
+      animate(
+        rightElement,
+        { opacity: [0, 1], x: [50, 0] },
+        { duration: 0.8, easing: [0.22, 1, 0.36, 1] }
+      );
+    });
+  }
+</script>

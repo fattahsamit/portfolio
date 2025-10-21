@@ -1,0 +1,82 @@
+---
+const experiences = [
+  {
+    title: 'Software Quality Assurance Engineer',
+    company: 'Trayn CA',
+    period: 'Jun 2023 - Sept 2024',
+    description: 'Executed manual, automated and API tests for web applications.',
+    achievements: [
+      'Designed, developed, and executed automated test scripts for web and mobile applications.',
+      'Performed API testing using Postman and automated REST API validation.',
+      'Developed test cases based on user stories and executed acceptance criteria verification.',
+      'Logged and managed defects using Jira and Trello while maintaining quality standards and clear communication.',
+      'Verified cross-browser compatibility testing across multiple environments.',
+      'Ensuring that customer interactions and support services meet established quality standards, improving customer satisfaction and experience.'
+    ]
+  },
+  {
+    title: 'Content Writer',
+    company: 'Fiverr',
+    period: 'Feb 2019 - Jul 2021',
+    description: 'Freelance content writer for various clients on a global platform.',
+    achievements: [
+      'Experienced in writing, editing, reviewing and proofreading for a global online marketplace.',
+      'Managed and delivered content that met clients\' needs within deadlines.'
+    ]
+  }
+];
+---
+
+<section id="experience" class="min-h-screen flex items-center justify-center px-6 py-20">
+  <div class="container mx-auto max-w-5xl">
+    <h2 class="text-4xl md:text-5xl font-bold mb-12 text-center">Work Experience</h2>
+    
+    <div class="space-y-8">
+      {experiences.map((exp, index) => (
+        <div 
+          data-animate-experience
+          data-delay={index * 100}
+          class="bg-gray-900 p-6 md:p-8 rounded-lg border border-gray-800 hover:border-blue-500 transition-all"
+        >
+          <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
+            <div>
+              <h3 class="text-2xl font-semibold text-white mb-1">{exp.title}</h3>
+              <p class="text-blue-400 text-lg">{exp.company}</p>
+            </div>
+            <span class="text-gray-400 mt-2 md:mt-0">{exp.period}</span>
+          </div>
+          
+          <p class="text-gray-400 mb-4">{exp.description}</p>
+          
+          <ul class="space-y-2">
+            {exp.achievements.map((achievement) => (
+              <li class="text-gray-400 flex items-start gap-3">
+                <svg class="w-5 h-5 text-blue-400 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                </svg>
+                <span>{achievement}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<script>
+  import { animate, stagger, inView } from "motion";
+  
+  inView('[data-animate-experience]', ({ target }) => {
+    const elements = document.querySelectorAll('[data-animate-experience]');
+    animate(
+      elements,
+      { opacity: [0, 1], x: [-30, 0] },
+      { 
+        delay: stagger(0.15),
+        duration: 0.7,
+        easing: [0.22, 1, 0.36, 1]
+      }
+    );
+  }, { amount: 0.2 });
+</script>

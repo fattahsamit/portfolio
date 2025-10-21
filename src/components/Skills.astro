@@ -1,0 +1,51 @@
+---
+const skills = [
+  { category: 'Programming Languages', items: ['Python', 'JavaScript', 'C'] },
+  { category: 'Frameworks and Libraries', items: ['Selenium', 'Pytest', 'Cypress', 'React', 'Node.js'] },
+  { category: 'Database Systems', items: ['PostgreSQL', 'MySQL', 'MongoDB'] },
+  { category: 'Tools', items: ['Postman', 'Git', 'Jira', 'Trello', 'Docker', 'MS Office', 'Slack', 'Figma', 'Linux'] },
+];
+---
+
+<section id="skills" class="min-h-screen flex items-center justify-center px-6 py-20 bg-gray-900/50">
+  <div class="container mx-auto max-w-6xl">
+    <h2 class="text-4xl md:text-5xl font-bold mb-12 text-center">Skills & Technologies</h2>
+    
+    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+      {skills.map((skillGroup, index) => (
+        <div 
+          data-animate-skill
+          data-delay={index * 100}
+          class="bg-gray-950 p-6 rounded-lg border border-gray-800 hover:border-blue-500 transition-colors"
+        >
+          <h3 class="text-xl font-semibold mb-4 text-blue-400">{skillGroup.category}</h3>
+          <ul class="space-y-2">
+            {skillGroup.items.map((skill) => (
+              <li class="text-gray-400 flex items-center gap-2">
+                <span class="w-1.5 h-1.5 bg-blue-400 rounded-full"></span>
+                {skill}
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<script>
+  import { animate, stagger, inView } from "motion";
+  
+  inView('[data-animate-skill]', ({ target }) => {
+    const elements = document.querySelectorAll('[data-animate-skill]');
+    animate(
+      elements,
+      { opacity: [0, 1], y: [30, 0] },
+      { 
+        delay: stagger(0.1),
+        duration: 0.6,
+        easing: [0.22, 1, 0.36, 1]
+      }
+    );
+  }, { amount: 0.3 });
+</script>

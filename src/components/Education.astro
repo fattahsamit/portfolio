@@ -1,0 +1,90 @@
+---
+const education = [
+  {
+    degree: 'Bachelor of Science in Computer Science & Engineering',
+    institution: 'Daffodil International University',
+    period: '2019 - 2023',
+    gpa: '3.75/4.0',
+    highlights: [
+      'Developed a strong foundation in technical skills such as programming languages, computer hardware and software systems, databases, and software development life cycle. Moreover, grew my soft skills by participating in programming contests and hackathons to improve my problem-solving abilities. Working with others in a team environment to create and manage various projects and thesis enhanced my communication and collaboration capabilities, adaptability, attention to detail, and project management skills.',
+    //   'Specialized in Software Engineering and Quality Assurance',
+    //   'Dean\'s List for 6 semesters',
+    //   'Led university coding club'
+    ]
+  },
+  {
+    degree: 'Higher Secondary Certificate (HSC)',
+    institution: 'Dhaka Residential Model College',
+    period: '2016 - 2018',
+    highlights: [
+     
+    ]
+  }
+//   ,{
+//     degree: 'Certifications',
+//     institution: 'Professional Development',
+//     period: '2019 - Present',
+//     highlights: [
+//       'AWS Certified Developer Associate',
+//       'ISTQB Certified Tester',
+//       'Professional Scrum Master (PSM I)'
+//     ]
+//   }
+];
+---
+
+<section id="education" class="min-h-screen flex items-center justify-center px-6 py-20 bg-gray-900/50">
+  <div class="container mx-auto max-w-5xl">
+    <h2 class="text-4xl md:text-5xl font-bold mb-12 text-center">Education</h2>
+    
+    <div class="space-y-8">
+      {education.map((edu, index) => (
+        <div 
+          data-animate-education
+          data-delay={index * 100}
+          class="bg-gray-950 p-6 md:p-8 rounded-lg border border-gray-800 hover:border-purple-500 transition-all"
+        >
+          <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
+            <div>
+              <h3 class="text-2xl font-semibold text-white mb-1">{edu.degree}</h3>
+              <p class="text-purple-400 text-lg">{edu.institution}</p>
+            </div>
+            <span class="text-gray-400 mt-2 md:mt-0">{edu.period}</span>
+          </div>
+          
+          {edu.gpa && (
+            <p class="text-blue-400 font-semibold mb-4">GPA: {edu.gpa}</p>
+          )}
+          
+          <ul class="space-y-2">
+            {edu.highlights.map((highlight) => (
+              <li class="text-gray-400 flex items-start gap-3">
+                <svg class="w-5 h-5 text-purple-400 mt-0.5 flex shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                  <path d="M10.394 2.08a1 1 0 00-.788 0l-7 3a1 1 0 000 1.84L5.25 8.051a.999.999 0 01.356-.257l4-1.714a1 1 0 11.788 1.838L7.667 9.088l1.94.831a1 1 0 00.787 0l7-3a1 1 0 000-1.838l-7-3zM3.31 9.397L5 10.12v4.102a8.969 8.969 0 00-1.05-.174 1 1 0 01-.89-.89 11.115 11.115 0 01.25-3.762zM9.3 16.573A9.026 9.026 0 007 14.935v-3.957l1.818.78a3 3 0 002.364 0l5.508-2.361a11.026 11.026 0 01.25 3.762 1 1 0 01-.89.89 8.968 8.968 0 00-5.35 2.524 1 1 0 01-1.4 0zM6 18a1 1 0 001-1v-2.065a8.935 8.935 0 00-2-.712V17a1 1 0 001 1z"/>
+                </svg>
+                <span>{highlight}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<script>
+  import { animate, stagger, inView } from "motion";
+  
+  inView('[data-animate-education]', ({ target }) => {
+    const elements = document.querySelectorAll('[data-animate-education]');
+    animate(
+      elements,
+      { opacity: [0, 1], x: [30, 0] },
+      { 
+        delay: stagger(0.15),
+        duration: 0.7,
+        easing: [0.22, 1, 0.36, 1]
+      }
+    );
+  }, { amount: 0.2 });
+</script>

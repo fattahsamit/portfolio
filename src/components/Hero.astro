@@ -1,0 +1,52 @@
+---
+---
+
+<section id="hero" class="min-h-screen flex items-center justify-center px-6 pt-20">
+  <div class="container mx-auto max-w-4xl text-center">
+    <div data-animate="fade-up">
+      <h1 class="text-5xl md:text-7xl font-bold mb-6 bg-linear-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
+        Mohammad Fattah Samit
+      </h1>
+    </div>
+    
+    <div data-animate="fade-up" data-delay="200">
+      <p class="text-xl md:text-2xl text-gray-400 mb-4">
+        Software Engineer - Quality Assurance - Problem Solver
+      </p>
+      <p class="text-md text-gray-500 mb-8">
+        Diligent and detail-oriented Computer Science and Engineering graduate, passionate about continuous learning and growth. Adaptable, responsible, and quick learner with a keen aptitude for technology. Seeking industry opportunities to collaborate, learn, and apply skills in real-world projects.
+      </p>
+    </div>
+    
+    <div data-animate="fade-up" data-delay="400" class="flex gap-4 justify-center">
+      <a 
+        href="#projects" 
+        class="px-8 py-3 bg-blue-500 hover:bg-blue-600 text-white rounded-lg transition-colors"
+      >
+        View Projects
+      </a>
+      <a 
+        href="#contact" 
+        class="px-8 py-3 border border-gray-700 hover:border-gray-500 text-white rounded-lg transition-colors"
+      >
+        Contact Me
+      </a>
+    </div>
+  </div>
+</section>
+
+<script>
+  import { animate, stagger } from "motion";
+  
+  const elements = document.querySelectorAll('[data-animate="fade-up"]');
+  
+  animate(
+    elements,
+    { opacity: [0, 1], y: [30, 0] },
+    { 
+      delay: stagger(0.2),
+      duration: 0.8,
+      easing: [0.22, 1, 0.36, 1]
+    }
+  );
+</script>
