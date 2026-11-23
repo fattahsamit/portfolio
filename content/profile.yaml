@@ -33,6 +33,17 @@ interests:
   - Machine learning
   - Deep learning
 
+# Shown on /research. Keep descriptions to one sentence.
+researchInterests:
+  - title: Software testing & quality
+    description: Test design, automation strategy, and measuring what test suites actually catch.
+  - title: Machine learning for testing
+    description: Using ML to prioritise tests, triage defects, and detect flaky or risky changes.
+  - title: Testing ML systems
+    description: How to verify models and data pipelines whose "correct" output isn't fixed.
+  - title: Applied deep learning
+    description: Computer vision and transfer learning for real-world problems, such as crop disease detection.
+
 # Links. Leave a value empty ("") to hide it everywhere.
 email: fattahsamit@gmail.com
 links:
