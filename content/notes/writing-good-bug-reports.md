@@ -1,13 +1,10 @@
 ---
 title: What makes a bug report easy to fix
 description: Five things I put in every defect report so developers can reproduce it the first time.
-date: 2026-11-01
+date: 2026-11
 tags: [QA, Process]
 draft: true # set to false to publish
 ---
-
-> **Sample post.** Replace or delete this file. It exists to show how notes work:
-> drop a `.md` or `.mdx` file into `content/notes/` and it appears at `/notes`.
 
 A good bug report saves more time than a fast one. These are the five things I always include.
 
@@ -32,9 +29,15 @@ One line each. Say what the spec, acceptance criteria, or common sense says shou
 
 ## 4. Environment and evidence
 
-Build/version, browser or device, test data used, plus a screenshot, video, HAR file, or log excerpt.
+Include the build/version, browser or device and the test data needed to reproduce the issue. Attach the smallest useful evidence:
+
+- **UI issue:** a screenshot or short screen recording that shows the relevant state and steps.
+- **API issue:** the method and endpoint, a sanitized request payload, response status and body and a request or trace ID if available.
+- **Intermittent or backend issue:** a timestamped, relevant logs.
+
+Redact credentials, tokens, personal data and unrelated traffic before sharing evidence. A short excerpt is usually more useful than a large unfiltered attachment.
 
 ## 5. Impact
 
-Who hits this, how often, and is there a workaround? That's what drives priority, not how
+Who hits this, how often and is there a workaround? That's what drives priority, not how
 annoying the bug was to find.

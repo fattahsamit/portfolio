@@ -1,4 +1,4 @@
-# Single source of truth for identity, links, and hero/about copy.
+# Single source of truth for identity, links and hero/about copy.
 # Fields marked TODO are placeholders — see CONTENT_TODO.md.
 
 name: Mohammad Fattah Samit
@@ -6,27 +6,23 @@ shortName: Fattah Samit
 location: Dhaka, Bangladesh
 
 # One-line positioning shown under the name in the hero.
-tagline: SQA engineer & researcher building reliable software.
+tagline: SQA Automation Engineer & Researcher building reliable software.
 
 # Two-sentence hero intro.
 intro: >-
   I design test strategies and automation that catch defects before users do,
   and I study how software and AI systems fail so they can be tested better.
-  Currently a QA Engineer working on InsurTech products.
+  Most recently, I worked as a QA Engineer I at All Generation Tech.
 
 # About section — short, human bio (Markdown allowed, paragraphs separated by a blank line).
 bio: |-
-  I'm a Computer Science & Engineering graduate from Daffodil International University
-  who ended up in quality assurance because I like asking "what happens if…?" more than
-  most people do. Over the past few years I've tested FinTech, InsurTech, and SaaS products,
-  written hundreds of test cases, and built BDD automation suites that cut manual regression time.
+  Results-driven Software QA Automation Engineer with 2.5+ years of experience improving 
+  product stability, release confidence and customer experience across fintech, 
+  complex management systems and SaaS products. Proven track record of reducing 
+  production defects, increasing test coverage through Manual, API and Automated 
+  Testing and validating complex business and financial workflows in agile teams.
 
-  Outside of release cycles I work on research at the intersection of software testing and
-  machine learning, and I still practise competitive-style problem solving to keep my
-  fundamentals sharp. Before engineering, I spent a few years freelancing as a writer —
-  which is why I care about clear bug reports and clear documentation.
-
-currentRole: QA Engineer I at AGT Software Partners
+currentRole: QA Engineer I at All Generation Tech
 interests:
   - Software testing
   - Test automation
@@ -36,15 +32,15 @@ interests:
 # One or two sentences introducing your research (home page + /research).
 researchStatement: >-
   I'm interested in where software testing and machine learning meet: using ML to make
-  testing smarter, and finding better ways to test ML systems themselves. My published
+  testing smarter and finding better ways to test ML systems themselves. My published
   work so far is in applied deep learning.
 
 # Shown on /research. Keep descriptions to one sentence.
 researchInterests:
   - title: Software testing & quality
-    description: Test design, automation strategy, and measuring what test suites actually catch.
+    description: Test design, automation strategy and measuring what test suites actually catch.
   - title: Machine learning for testing
-    description: Using ML to prioritise tests, triage defects, and detect flaky or risky changes.
+    description: Using ML to prioritise tests, triage defects and detect flaky or risky changes.
   - title: Testing ML systems
     description: How to verify models and data pipelines whose "correct" output isn't fixed.
   - title: Applied deep learning
@@ -59,4 +55,4 @@ links:
   orcid: "" # TODO: ORCID URL, e.g. https://orcid.org/0000-0000-0000-0000
 
 # Resume PDF placed in public/ (e.g. public/resume.pdf). Empty = hide Resume button.
-resume: "" # TODO: add public/resume.pdf and set to /resume.pdf
+resume: /Resume_Mohammad_Fattah_Samit.pdf

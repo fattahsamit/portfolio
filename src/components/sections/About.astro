@@ -10,7 +10,7 @@ const [degree] = await getEducation();
 
 const paragraphs = profile.bio.split(/\n\s*\n/).map((p) => p.replace(/\s*\n\s*/g, " ").trim());
 const facts = [
-  { term: "Current role", detail: profile.currentRole },
+  { term: "Recent role", detail: profile.currentRole },
   degree && {
     term: "Education",
     detail: `${degree.data.degree}, ${degree.data.institution}${degree.data.end ? ` (${degree.data.end})` : ""}`,

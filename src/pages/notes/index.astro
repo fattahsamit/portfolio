@@ -1,0 +1,48 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import { getNotes } from "@/lib/content";
+import { formatDate, isoDate } from "@/lib/format";
+import { render } from "astro:content";
+
+const notes = await getNotes();
+const renderedNotes = await Promise.all(
+  notes.map(async (note) => ({
+    note,
+    Content: (await render(note)).Content,
+  })),
+);
+---
+
+<BaseLayout title="Notes" description="Notes and writing by Samit Fattah.">
+  <section class="py-16 md:py-20">
+    <header>
+      <p class="font-mono text-sm text-muted">Writing</p>
+      <h1 class="mt-2 text-3xl font-semibold">Notes</h1>
+      <p class="mt-3 max-w-prose text-muted">Short notes on testing, software and research.</p>
+    </header>
+
+    {
+      renderedNotes.length > 0 ? (
+        <div class="mt-12 space-y-16">
+          {renderedNotes.map(({ note, Content }) => (
+            <article id={note.id} class="border-t border-border pt-8">
+              <p class="font-mono text-xs text-muted">
+                <time datetime={isoDate(note.data.date)}>{formatDate(note.data.date)}</time>
+              </p>
+              <h2 class="mt-2 text-xl font-semibold">{note.data.title}</h2>
+              <p class="mt-2 max-w-prose text-[15px] text-muted">{note.data.description}</p>
+              {note.data.tags.length > 0 && (
+                <p class="mt-3 font-mono text-xs text-muted">{note.data.tags.join(" · ")}</p>
+              )}
+              <div class="prose mt-6 max-w-prose">
+                <Content />
+              </div>
+            </article>
+          ))}
+        </div>
+      ) : (
+        <p class="mt-12 border-t border-border pt-8 text-muted">No notes have been published yet.</p>
+      )
+    }
+  </section>
+</BaseLayout>

@@ -4,7 +4,7 @@ authors:
   - MD. Kawsar Hossain
   - Shamim Shikder
   - Mohammad Fattah Samit
-venue: B.Sc. Project Report, Dept. of CSE, Daffodil International University
+venue: B.Sc. Thesis Report, Dept. of CSE, Daffodil International University
 year: 2023
 type: report
 status: published

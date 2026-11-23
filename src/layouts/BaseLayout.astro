@@ -33,7 +33,7 @@ const {
   noindex = false,
 } = Astro.props;
 
-const fullTitle = title ? `${title} · ${profile.shortName}` : `${profile.name} · SQA Engineer & Researcher`;
+const fullTitle = title ? `${title} · ${profile.shortName}` : `${profile.name} · SQA Automation Engineer & Researcher`;
 const site = Astro.site ?? new URL(Astro.url.origin);
 const canonical = new URL(Astro.url.pathname, site).href;
 const imageUrl = new URL(image, site).href;
