@@ -1,0 +1,38 @@
+---
+import Section from "@/components/Section.astro";
+import TimelineItem from "@/components/TimelineItem.astro";
+import { render } from "astro:content";
+import { getEducation, getExperience } from "@/lib/content";
+
+const roles = await getExperience();
+const education = await Promise.all(
+  (await getEducation()).map(async (e) => ({ ...e.data, Content: (await render(e)).Content, hasBody: Boolean(e.body?.trim()) })),
+);
+---
+
+<Section id="experience" title="Experience">
+  <ol class="space-y-10 border-l border-border">
+    {roles.map((entry) => <TimelineItem entry={entry} />)}
+  </ol>
+
+  <h3 class="mt-14 font-mono text-sm font-medium text-muted" id="education">Education</h3>
+  <ul class="mt-5 space-y-6">
+    {
+      education.map((e) => (
+        <li>
+          <p class="font-mono text-xs text-muted">{e.end ? `${e.start} – ${e.end}` : e.start}</p>
+          <p class="mt-1 font-semibold">{e.degree}</p>
+          <p class="text-[15px] text-muted">
+            {e.institution}
+            {e.grade && ` · ${e.grade}`}
+          </p>
+          {e.hasBody && (
+            <div class="mt-2 max-w-prose text-[15px] leading-relaxed">
+              <e.Content />
+            </div>
+          )}
+        </li>
+      ))
+    }
+  </ul>
+</Section>

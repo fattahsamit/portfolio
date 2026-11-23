@@ -1,0 +1,26 @@
+---
+import Icon from "@/components/Icon.astro";
+import Section from "@/components/Section.astro";
+import SocialLinks from "@/components/SocialLinks.astro";
+import type { Profile } from "@/lib/content";
+
+interface Props {
+  profile: Profile;
+}
+const { profile } = Astro.props;
+---
+
+<Section id="contact" title="Contact">
+  <p class="max-w-prose text-lg leading-relaxed">
+    Whether it's a QA role, a tricky testing problem, or a research collaboration, email is the best way to reach
+    me.
+  </p>
+  <a
+    href={`mailto:${profile.email}`}
+    class="group mt-6 inline-flex items-center gap-2 text-xl font-semibold break-all text-fg hover:text-accent sm:text-2xl"
+  >
+    {profile.email}
+    <Icon name="arrow-up-right" class="size-5 text-muted transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-accent" />
+  </a>
+  <SocialLinks variant="list" class="mt-10" />
+</Section>

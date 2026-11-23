@@ -1,0 +1,57 @@
+---
+import Icon from "./Icon.astro";
+---
+
+<button
+  id="theme-toggle"
+  type="button"
+  aria-label="Dark mode"
+  aria-pressed="false"
+  title="Toggle dark mode"
+  class="inline-flex size-9 items-center justify-center rounded-lg text-muted transition-colors hover:bg-surface hover:text-fg"
+>
+  <Icon name="moon" class="size-[18px] dark:hidden" />
+  <Icon name="sun" class="hidden size-[18px] dark:block" />
+</button>
+
+<script>
+  // The initial theme is applied by the inline script in BaseLayout <head>
+  // (before first paint). This only wires up the button and system changes.
+  const root = document.documentElement;
+  const button = document.getElementById("theme-toggle");
+  const media = window.matchMedia("(prefers-color-scheme: dark)");
+
+  function stored(): string | null {
+    try {
+      return localStorage.getItem("theme");
+    } catch {
+      return null;
+    }
+  }
+
+  function apply(dark: boolean) {
+    root.classList.toggle("dark", dark);
+    root.style.colorScheme = dark ? "dark" : "light";
+    button?.setAttribute("aria-pressed", String(dark));
+    document
+      .querySelector('meta[name="theme-color"]')
+      ?.setAttribute("content", dark ? "#09090b" : "#ffffff");
+  }
+
+  apply(root.classList.contains("dark"));
+
+  button?.addEventListener("click", () => {
+    const dark = !root.classList.contains("dark");
+    apply(dark);
+    try {
+      localStorage.setItem("theme", dark ? "dark" : "light");
+    } catch {
+      /* storage unavailable (private mode) — theme still applies for this page */
+    }
+  });
+
+  // Follow the OS setting live, unless the visitor has picked a theme manually.
+  media.addEventListener("change", (e) => {
+    if (!stored()) apply(e.matches);
+  });
+</script>

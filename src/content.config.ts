@@ -26,6 +26,7 @@ const profile = defineCollection({
     bio: z.string(),
     currentRole: z.string(),
     interests: z.array(z.string()),
+    researchStatement: z.string(),
     researchInterests: z.array(
       z.object({ title: z.string(), description: z.string() }),
     ),

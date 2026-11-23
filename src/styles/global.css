@@ -1,0 +1,165 @@
+@import "tailwindcss";
+
+/* Class-based dark mode: <html class="dark"> is set before first paint. */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/*
+ * Colour tokens. Neutral zinc scale + one accent (teal).
+ * Contrast (WCAG AA, normal text ≥ 4.5:1):
+ *   light  fg #18181b / bg #ffffff  = 17.7:1   muted #52525b = 7.7:1   accent #0f766e = 5.5:1
+ *   dark   fg #f4f4f5 / bg #09090b  = 18.1:1   muted #a1a1aa = 7.8:1   accent #2dd4bf = 11.0:1
+ */
+:root {
+  --bg: #ffffff;
+  --surface: #fafafa;
+  --fg: #18181b;
+  --muted: #52525b;
+  --border: #e4e4e7;
+  --border-strong: #d4d4d8;
+  --accent: #0f766e;
+  --accent-hover: #115e59;
+  --accent-contrast: #ffffff;
+  --accent-soft: #f0fdfa;
+  color-scheme: light;
+}
+
+.dark {
+  --bg: #09090b;
+  --surface: #111113;
+  --fg: #f4f4f5;
+  --muted: #a1a1aa;
+  --border: #27272a;
+  --border-strong: #3f3f46;
+  --accent: #2dd4bf;
+  --accent-hover: #5eead4;
+  --accent-contrast: #042f2e;
+  --accent-soft: #042f2e;
+  color-scheme: dark;
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-fg: var(--fg);
+  --color-muted: var(--muted);
+  --color-border: var(--border);
+  --color-border-strong: var(--border-strong);
+  --color-accent: var(--accent);
+  --color-accent-hover: var(--accent-hover);
+  --color-accent-contrast: var(--accent-contrast);
+  --color-accent-soft: var(--accent-soft);
+
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-jetbrains), ui-monospace, monospace;
+}
+
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+    text-rendering: optimizeLegibility;
+    scroll-padding-top: 5rem; /* keep anchored headings clear of the sticky header */
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    html {
+      scroll-behavior: smooth;
+    }
+  }
+
+  body {
+    @apply bg-bg font-sans text-fg antialiased;
+    font-feature-settings: "cv11", "ss01"; /* Inter: single-storey a, open digits */
+  }
+
+  ::selection {
+    @apply bg-accent text-accent-contrast;
+  }
+
+  /* One consistent, highly visible focus ring for every interactive element. */
+  :focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+
+  h1,
+  h2,
+  h3 {
+    @apply tracking-tight text-balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+}
+
+@layer components {
+  /* Inline text link: underlined, accent on hover. */
+  .link {
+    @apply underline decoration-border-strong decoration-1 underline-offset-4 transition-colors hover:text-accent hover:decoration-accent;
+  }
+
+  /* Long-form Markdown (notes, bio). */
+  .prose {
+    @apply leading-7 text-fg;
+  }
+  .prose > * + * {
+    @apply mt-5;
+  }
+  .prose h2 {
+    @apply mt-10 text-xl font-semibold;
+  }
+  .prose h3 {
+    @apply mt-8 text-lg font-semibold;
+  }
+  .prose a {
+    @apply underline decoration-border-strong underline-offset-4 hover:text-accent hover:decoration-accent;
+  }
+  .prose ul {
+    @apply list-disc space-y-2 pl-5 marker:text-muted;
+  }
+  .prose ol {
+    @apply list-decimal space-y-2 pl-5 marker:text-muted;
+  }
+  .prose strong {
+    @apply font-semibold;
+  }
+  .prose blockquote {
+    @apply border-l-2 border-border-strong pl-4 text-muted;
+  }
+  .prose code:not(pre code) {
+    @apply rounded border border-border bg-surface px-1 py-0.5 font-mono text-[0.85em];
+  }
+  .prose pre {
+    @apply overflow-x-auto rounded-lg border border-border p-4 font-mono text-sm leading-6;
+  }
+  .prose hr {
+    @apply my-10 border-border;
+  }
+  .prose img {
+    @apply rounded-lg border border-border;
+  }
+}
+
+/*
+ * Scroll reveal. Hidden state applies only when JS is running (html.js) AND
+ * the user has not asked for reduced motion, so content is never lost.
+ */
+@media (prefers-reduced-motion: no-preference) {
+  .js [data-reveal] {
+    transition:
+      opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+      transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .js [data-reveal]:not(.is-visible) {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+}
+
+/* Shiki: swap to dark token colours in dark mode. */
+.dark .astro-code,
+.dark .astro-code span {
+  color: var(--shiki-dark) !important;
+  background-color: var(--shiki-dark-bg) !important;
+}

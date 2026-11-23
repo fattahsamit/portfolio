@@ -1,0 +1,28 @@
+---
+/**
+ * Editorial section: label column on the left (md+), content on the right.
+ * Stacks on small screens. `title` becomes the section's <h2>.
+ */
+interface Props {
+  id: string;
+  title: string;
+  class?: string;
+}
+const { id, title, class: className } = Astro.props;
+const headingId = `${id}-heading`;
+---
+
+<section
+  id={id}
+  aria-labelledby={headingId}
+  class:list={["border-t border-border py-16 md:py-20", className]}
+>
+  <div class="grid gap-6 md:grid-cols-[9rem_1fr] md:gap-10" data-reveal>
+    <h2 id={headingId} class="font-mono text-sm font-medium tracking-normal text-muted md:pt-1">
+      {title}
+    </h2>
+    <div class="min-w-0">
+      <slot />
+    </div>
+  </div>
+</section>

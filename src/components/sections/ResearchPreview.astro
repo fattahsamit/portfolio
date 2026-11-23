@@ -1,0 +1,36 @@
+---
+import Icon from "@/components/Icon.astro";
+import PublicationItem from "@/components/PublicationItem.astro";
+import Section from "@/components/Section.astro";
+import { getPublications, type Profile } from "@/lib/content";
+
+interface Props {
+  profile: Profile;
+}
+const { profile } = Astro.props;
+const { papers, ongoing } = await getPublications();
+const preview = papers.slice(0, 3);
+---
+
+<Section id="research" title="Research">
+  <p class="max-w-prose leading-relaxed">
+    {profile.researchStatement}
+    {ongoing.length > 0 && ` I currently have ${ongoing.length} project${ongoing.length > 1 ? "s" : ""} in progress.`}
+  </p>
+
+  {
+    preview.length > 0 && (
+      <ul class="mt-8 space-y-8">
+        {preview.map((p) => (
+          <li>
+            <PublicationItem publication={p} highlight={profile.name} />
+          </li>
+        ))}
+      </ul>
+    )
+  }
+
+  <a href="/research" class="mt-8 inline-flex items-center gap-1.5 text-sm font-medium text-accent hover:underline underline-offset-4">
+    Publications, ongoing work & interests <Icon name="arrow-right" />
+  </a>
+</Section>

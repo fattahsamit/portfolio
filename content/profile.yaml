@@ -33,6 +33,12 @@ interests:
   - Machine learning
   - Deep learning
 
+# One or two sentences introducing your research (home page + /research).
+researchStatement: >-
+  I'm interested in where software testing and machine learning meet: using ML to make
+  testing smarter, and finding better ways to test ML systems themselves. My published
+  work so far is in applied deep learning.
+
 # Shown on /research. Keep descriptions to one sentence.
 researchInterests:
   - title: Software testing & quality

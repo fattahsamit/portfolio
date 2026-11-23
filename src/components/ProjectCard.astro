@@ -1,0 +1,49 @@
+---
+import Icon from "./Icon.astro";
+import Tag from "./Tag.astro";
+import type { Project } from "@/lib/content";
+
+interface Props {
+  project: Project;
+}
+
+const { title, summary, tags, github, live } = Astro.props.project.data;
+const links = [
+  github && { href: github, label: "Code", icon: "github" as const },
+  live && { href: live, label: "Live", icon: "arrow-up-right" as const },
+].filter((l): l is Exclude<typeof l, "" | undefined> => Boolean(l));
+---
+
+<article
+  class="flex h-full flex-col rounded-xl border border-border p-5 transition-colors hover:border-border-strong"
+>
+  <h4 class="font-semibold">{title}</h4>
+  <p class="mt-2 text-[15px] leading-relaxed text-muted">{summary}</p>
+  {
+    tags.length > 0 && (
+      <ul class="mt-4 flex flex-wrap gap-1.5" aria-label="Technologies">
+        {tags.map((t) => (
+          <Tag>{t}</Tag>
+        ))}
+      </ul>
+    )
+  }
+  {
+    links.length > 0 && (
+      <div class="mt-auto flex gap-4 pt-4">
+        {links.map((l) => (
+          <a
+            href={l.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center gap-1.5 text-sm font-medium text-fg hover:text-accent"
+          >
+            <Icon name={l.icon} class="size-4" />
+            {l.label}
+            <span class="sr-only">for {title}</span>
+          </a>
+        ))}
+      </div>
+    )
+  }
+</article>

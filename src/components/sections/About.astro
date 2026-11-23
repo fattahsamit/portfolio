@@ -1,0 +1,37 @@
+---
+import Section from "@/components/Section.astro";
+import { getEducation, type Profile } from "@/lib/content";
+
+interface Props {
+  profile: Profile;
+}
+const { profile } = Astro.props;
+const [degree] = await getEducation();
+
+const paragraphs = profile.bio.split(/\n\s*\n/).map((p) => p.replace(/\s*\n\s*/g, " ").trim());
+const facts = [
+  { term: "Current role", detail: profile.currentRole },
+  degree && {
+    term: "Education",
+    detail: `${degree.data.degree}, ${degree.data.institution}${degree.data.end ? ` (${degree.data.end})` : ""}`,
+  },
+  { term: "Based in", detail: profile.location },
+  { term: "Interests", detail: profile.interests.join(", ") },
+].filter((f): f is { term: string; detail: string } => Boolean(f));
+---
+
+<Section id="about" title="About">
+  <div class="space-y-4 leading-relaxed">
+    {paragraphs.map((p) => <p>{p}</p>)}
+  </div>
+  <dl class="mt-8 grid gap-x-6 gap-y-3 border-t border-border pt-6 text-[15px] sm:grid-cols-[8rem_1fr]">
+    {
+      facts.map((f) => (
+        <>
+          <dt class="font-mono text-xs text-muted sm:pt-1">{f.term}</dt>
+          <dd class="-mt-2 sm:mt-0">{f.detail}</dd>
+        </>
+      ))
+    }
+  </dl>
+</Section>

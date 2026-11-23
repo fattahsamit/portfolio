@@ -1,0 +1,64 @@
+---
+import Icon, { type IconName } from "./Icon.astro";
+import { getProfile } from "@/lib/content";
+
+interface Props {
+  /** "icons" = compact icon row, "list" = labelled rows with the URL handle. */
+  variant?: "icons" | "list";
+  class?: string;
+}
+
+const { variant = "icons", class: className } = Astro.props;
+const profile = await getProfile();
+
+const all: Array<{ icon: IconName; label: string; href?: string; display?: string }> = [
+  { icon: "mail", label: "Email", href: `mailto:${profile.email}`, display: profile.email },
+  { icon: "github", label: "GitHub", href: profile.links.github },
+  { icon: "linkedin", label: "LinkedIn", href: profile.links.linkedin },
+  { icon: "scholar", label: "Google Scholar", href: profile.links.scholar },
+  { icon: "orcid", label: "ORCID", href: profile.links.orcid },
+];
+
+const links = all
+  .filter((l): l is typeof l & { href: string } => Boolean(l.href))
+  .map((l) => ({
+    ...l,
+    external: l.href.startsWith("http"),
+    display: l.display ?? l.href.replace(/^https?:\/\/(www\.)?/, "").replace(/\/$/, ""),
+  }));
+---
+
+{
+  variant === "icons" ? (
+    <ul class:list={["flex items-center gap-1", className]}>
+      {links.map((l) => (
+        <li>
+          <a
+            href={l.href}
+            class="inline-flex size-9 items-center justify-center rounded-lg text-muted transition-colors hover:bg-surface hover:text-fg"
+            {...(l.external ? { target: "_blank", rel: "noopener noreferrer me" } : {})}
+          >
+            <Icon name={l.icon} class="size-[18px]" label={l.label} />
+          </a>
+        </li>
+      ))}
+    </ul>
+  ) : (
+    <ul class:list={["divide-y divide-border border-y border-border", className]}>
+      {links.map((l) => (
+        <li>
+          <a
+            href={l.href}
+            class="group flex items-center gap-4 py-3.5 transition-colors hover:text-accent"
+            {...(l.external ? { target: "_blank", rel: "noopener noreferrer me" } : {})}
+          >
+            <Icon name={l.icon} class="size-[18px] text-muted group-hover:text-accent" />
+            <span class="w-32 shrink-0 text-sm text-muted">{l.label}</span>
+            <span class="min-w-0 truncate font-mono text-sm">{l.display}</span>
+            <Icon name="arrow-up-right" class="ml-auto size-4 text-muted opacity-0 transition-opacity group-hover:opacity-100" />
+          </a>
+        </li>
+      ))}
+    </ul>
+  )
+}

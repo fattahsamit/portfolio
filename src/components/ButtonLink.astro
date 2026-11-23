@@ -1,0 +1,24 @@
+---
+import type { HTMLAttributes } from "astro/types";
+
+interface Props extends HTMLAttributes<"a"> {
+  variant?: "primary" | "secondary";
+}
+
+const { variant = "secondary", class: className, ...rest } = Astro.props;
+const isExternal = typeof rest.href === "string" && /^https?:\/\//.test(rest.href);
+---
+
+<a
+  {...rest}
+  {...isExternal ? { target: "_blank", rel: "noopener noreferrer" } : {}}
+  class:list={[
+    "inline-flex h-10 items-center gap-2 rounded-lg px-4 text-sm font-medium transition-colors",
+    variant === "primary"
+      ? "bg-accent text-accent-contrast hover:bg-accent-hover"
+      : "border border-border-strong text-fg hover:border-fg",
+    className,
+  ]}
+>
+  <slot />
+</a>

@@ -1,0 +1,67 @@
+---
+import { render } from "astro:content";
+import type { Experience } from "@/lib/content";
+import { formatYearMonth } from "@/lib/format";
+
+interface Props {
+  entry: Experience;
+}
+
+const { entry } = Astro.props;
+const { role, company, companyUrl, location, start, end, summary } = entry.data;
+const { Content } = await render(entry);
+const current = !end;
+---
+
+<li class="relative pl-6">
+  <span
+    aria-hidden="true"
+    class:list={[
+      "absolute top-[7px] -left-[5px] size-[9px] rounded-full border",
+      current ? "border-accent bg-accent" : "border-border-strong bg-bg",
+    ]}
+  ></span>
+  <p class="font-mono text-xs text-muted">
+    <time datetime={start}>{formatYearMonth(start)}</time>{" – "}{
+      end ? <time datetime={end}>{formatYearMonth(end)}</time> : <span>Present</span>
+    }{location && ` · ${location}`}
+  </p>
+  <h3 class="mt-1.5 text-base font-semibold">
+    {role}
+    <span class="font-normal text-muted">
+      {"· "}{
+        companyUrl ? (
+          <a href={companyUrl} class="link" target="_blank" rel="noopener noreferrer">
+            {company}
+          </a>
+        ) : (
+          company
+        )
+      }
+    </span>
+  </h3>
+  {summary && <p class="mt-1.5 text-[15px] text-muted">{summary}</p>}
+  <div class="timeline-body mt-3 text-[15px] leading-relaxed">
+    <Content />
+  </div>
+</li>
+
+<style>
+  .timeline-body :global(ul) {
+    display: grid;
+    gap: 0.4rem;
+  }
+  .timeline-body :global(li) {
+    position: relative;
+    padding-left: 1rem;
+  }
+  .timeline-body :global(li)::before {
+    content: "–";
+    position: absolute;
+    left: 0;
+    color: var(--muted);
+  }
+  .timeline-body :global(strong) {
+    font-weight: 600;
+  }
+</style>

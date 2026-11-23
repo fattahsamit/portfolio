@@ -1,0 +1,31 @@
+---
+import ProjectCard from "@/components/ProjectCard.astro";
+import Section from "@/components/Section.astro";
+import { getProjects } from "@/lib/content";
+
+const { qa, engineering } = await getProjects();
+const groups = [
+  { title: "Testing & QA", items: qa },
+  { title: "Engineering", items: engineering },
+].filter((g) => g.items.length > 0);
+const showGroupTitles = groups.length > 1;
+---
+
+<Section id="projects" title="Projects">
+  <div class="space-y-12">
+    {
+      groups.map((g) => (
+        <div>
+          <h3 class:list={["mb-4 text-base font-semibold", !showGroupTitles && "sr-only"]}>{g.title}</h3>
+          <ul class="grid gap-4 sm:grid-cols-2">
+            {g.items.map((p) => (
+              <li>
+                <ProjectCard project={p} />
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))
+    }
+  </div>
+</Section>

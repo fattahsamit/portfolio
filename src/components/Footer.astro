@@ -1,0 +1,16 @@
+---
+import SocialLinks from "./SocialLinks.astro";
+import { getProfile } from "@/lib/content";
+
+const profile = await getProfile();
+const year = new Date().getFullYear();
+---
+
+<footer class="border-t border-border">
+  <div
+    class="mx-auto flex max-w-4xl flex-col-reverse items-start gap-4 px-5 py-8 sm:flex-row sm:items-center sm:justify-between"
+  >
+    <p class="font-mono text-xs text-muted">{`© ${year} ${profile.name} · ${profile.location}`}</p>
+    <SocialLinks class="-ml-2 sm:ml-0 sm:-mr-2" />
+  </div>
+</footer>

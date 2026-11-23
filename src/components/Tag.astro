@@ -1,0 +1,13 @@
+---
+/** Small monospace label for tech stacks, topics, and skills. */
+interface Props {
+  as?: "li" | "span";
+}
+const { as: Tag = "li" } = Astro.props;
+---
+
+<Tag
+  class="inline-flex items-center rounded-md border border-border px-2 py-0.5 font-mono text-xs leading-5 text-muted"
+>
+  <slot />
+</Tag>
