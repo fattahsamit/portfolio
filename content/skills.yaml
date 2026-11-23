@@ -1,0 +1,41 @@
+# Grouped skill tags. No levels/percentages on purpose.
+- group: Testing & QA
+  items:
+    - Manual & exploratory testing
+    - Test case design
+    - Regression / smoke / sanity
+    - UAT
+    - API testing
+    - BDD
+    - Cross-browser testing
+    - Selenium
+    - Cypress
+    - Pytest
+    - Postman
+- group: Programming
+  items:
+    - Python
+    - JavaScript
+    - TypeScript
+    - C
+    - SQL
+    - React
+    - Node.js
+- group: Tools & DevOps
+  items:
+    - Git
+    - GitHub Actions
+    - Docker
+    - Linux
+    - Jira
+    - Trello
+    - PostgreSQL
+    - MySQL
+    - MongoDB
+    - Figma
+- group: Research
+  items:
+    - Machine learning
+    - Deep learning
+    - Experimental design
+    - Technical writing

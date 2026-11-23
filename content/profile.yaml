@@ -1,0 +1,45 @@
+# Single source of truth for identity, links, and hero/about copy.
+# Fields marked TODO are placeholders — see CONTENT_TODO.md.
+
+name: Mohammad Fattah Samit
+shortName: Fattah Samit
+location: Dhaka, Bangladesh
+
+# One-line positioning shown under the name in the hero.
+tagline: SQA engineer & researcher building reliable software.
+
+# Two-sentence hero intro.
+intro: >-
+  I design test strategies and automation that catch defects before users do,
+  and I study how software and AI systems fail so they can be tested better.
+  Currently a QA Engineer working on InsurTech products.
+
+# About section — short, human bio (Markdown allowed, paragraphs separated by a blank line).
+bio: |-
+  I'm a Computer Science & Engineering graduate from Daffodil International University
+  who ended up in quality assurance because I like asking "what happens if…?" more than
+  most people do. Over the past few years I've tested FinTech, InsurTech, and SaaS products,
+  written hundreds of test cases, and built BDD automation suites that cut manual regression time.
+
+  Outside of release cycles I work on research at the intersection of software testing and
+  machine learning, and I still practise competitive-style problem solving to keep my
+  fundamentals sharp. Before engineering, I spent a few years freelancing as a writer —
+  which is why I care about clear bug reports and clear documentation.
+
+currentRole: QA Engineer I at AGT Software Partners
+interests:
+  - Software testing
+  - Test automation
+  - Machine learning
+  - Deep learning
+
+# Links. Leave a value empty ("") to hide it everywhere.
+email: fattahsamit@gmail.com
+links:
+  github: https://github.com/fattahsamit
+  linkedin: https://www.linkedin.com/in/fattah-samit
+  scholar: "" # TODO: Google Scholar profile URL
+  orcid: "" # TODO: ORCID URL, e.g. https://orcid.org/0000-0000-0000-0000
+
+# Resume PDF placed in public/ (e.g. public/resume.pdf). Empty = hide Resume button.
+resume: "" # TODO: add public/resume.pdf and set to /resume.pdf
